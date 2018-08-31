@@ -1,0 +1,14 @@
+<p>
+	<a href="{% url 'diary:index' %}">主页</a>	
+	<a href="{% url 'diary:topics' %}">Topics</a>
+	<a href="{% url 'diary:showImg' %}">相册</a>
+	{% if user.is_authenticated %}
+		您好,{{ user.username }}
+		<a href="{% url 'users:logout' %}">注销</a>
+	{% else %}
+		<a href="{% url 'users:register' %}">注册</a>
+		<a href="{% url 'users:login' %}">登录</a>
+	{% endif %}
+</p>
+
+{% block content %}{% endblock content %}

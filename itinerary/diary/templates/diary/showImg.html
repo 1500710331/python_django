@@ -1,0 +1,30 @@
+{% extends "diary/base.html" %}
+
+{% block content %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片展示</title>
+</head>
+<body>
+	<a href="{% url 'diary:uploadImg' %}">上传</a>
+    
+    <ul>
+    {% for item in imgs %}
+    	<li>
+    		<hr/>
+			<p>{{ Img.date_added|date:'M d, Y H:i'}}</p>
+	        <img src="{{ item.img_url.url }}"><br/>
+	    </li>
+	{% empty %}
+		<li>
+			没有创建任何条目		
+		</li>
+	    {% endfor %}
+	</ul>
+
+
+</body>
+</html>
+{% endblock content %}

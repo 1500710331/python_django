@@ -1,0 +1,13 @@
+{% extends "diary/base.html" %}
+{% block content %}
+<p>
+	<a href="{% url 'diary:topic' topic.id %}">{{ topic }}</a>
+</p>
+<p>在此记录你的快乐时光</p>
+<form action="{% url 'diary:new_entry' topic.id %}" method="post">
+	{% csrf_token %}
+	{{ form.as_p }}
+	<button name="submit">提交</button>	
+</form>
+
+{% endblock content %}
